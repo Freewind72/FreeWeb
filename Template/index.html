@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萌物堂 - 精致手办与可爱玩具专卖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 固定顶栏 -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/1.png" alt="萌物堂">
+            <span class="logo-text">萌物堂</span>
+        </div>
+        <ul class="nav-links">
+            <li id="home-link" class="active">
+                <a href="#">首页</a>
+            </li>
+            <li id="products-link">
+                <a href="#">商品列表</a>
+            </li>
+            <li id="about-link">
+                <a href="#">关于我们</a>
+            </li>
+            <!-- 去除商品详情菜单项 -->
+            <!-- <li id="detail-link">
+                <a href="#">商品详情</a>
+            </li> -->
+            <li id="cart-link">
+                <a href="#">购物车</a>
+            </li>
+        </ul>
+        <div class="user-section">
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <div class="user-icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home-page">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <div class="hero-title">发现心仪手办与玩具</div>
+                    <div class="hero-desc">精选全球优质手办与可爱玩具，为您带来最萌最治愈的收藏体验</div>
+                </div>
+            </div>
+            <!-- 可添加更多首页内容 -->
+        </section>
+
+        <!-- 商品列表页 -->
+        <section id="products-page" style="display:none;">
+            <div class="page-title">
+                <h1 class="fade-in">商品列表</h1>
+                <p class="fade-in delay-1">为您甄选全球优质手办与玩具</p>
+            </div>
+            <div class="product-list">
+                <!-- 产品卡片将通过JavaScript动态生成 -->
+            </div>
+        </section>
+
+        <!-- 关于我们页（商品列表后） -->
+        <section id="about-page" style="display:none;">
+            <div class="page-title">
+                <h1 class="fade-in">关于我们</h1>
+                <p class="fade-in delay-1">
+                    萌物堂致力于为用户提供最精致的手办与可爱玩具，精选全球优质产品，让生活充满萌趣与治愈。我们不断追求创新与品质，打造属于每一位爱好者的萌趣世界。
+                </p>
+            </div>
+            <div style="max-width:700px;margin:0 auto 40px auto;font-size:16px;line-height:2;color:#5a3d3d;text-align:center;">
+                <p>我们拥有专业的采购团队，严选全球优质手办与玩具，确保每一件商品都能带给您愉悦的体验。</p>
+                <p>无论是动漫手办、毛绒玩具还是创意周边，我们都用心为您甄选。</p>
+                <p>感谢您的信任与支持，萌物堂愿与您一起分享每一份可爱与美好！</p>
+            </div>
+        </section>
+
+        <!-- 商品详情页 -->
+        <section id="detail-page" class="product-detail" style="display:none;">
+            <div class="detail-container">
+                <div class="detail-images">
+                    <div class="main-image-container">
+                        <img id="main-image" class="main-image" src="" alt="产品主图">
+                    </div>
+                    <div class="thumbnail-container">
+                        <!-- 缩略图将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                <div class="detail-info">
+                    <h1 id="detail-title" class="detail-title">产品标题</h1>
+                    <div class="detail-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="review-count">(128 条评价)</span>
+                    </div>
+                    <div class="detail-price-box">
+                        <span id="detail-price" class="detail-price">¥99.00</span>
+                        <span id="detail-original-price" class="detail-original-price">¥129.00</span>
+                        <span id="detail-discount" class="detail-discount">限时优惠</span>
+                    </div>
+                    <p id="detail-description" class="detail-description">
+                        产品详情描述将在这里显示...
+                    </p>
+                    <div class="detail-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="add-to-cart-large">
+                            <i class="fas fa-cart-plus"></i> 加入购物车
+                        </button>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i> 收藏
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 购物车页 -->
+        <section id="cart-page" class="cart-page" style="display:none;">
+            <div class="cart-container">
+                <div class="cart-items">
+                    <h2 class="cart-title">我的购物车</h2>
+                    <div id="cart-items-container">
+                        <!-- 购物车物品将通过JavaScript动态生成 -->
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-basket"></i>
+                            <p>您的购物车是空的</p>
+                            <button class="continue-shopping">继续购物</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <h2 class="summary-title">订单摘要</h2>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>小计</span>
+                            <span id="cart-subtotal">¥0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>运费</span>
+                            <span id="cart-shipping">¥0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>折扣</span>
+                            <span id="cart-discount">-¥0.00</span>
+                        </div>
+                    </div>
+                    <div class="summary-total">
+                        <span>总计</span>
+                        <span id="cart-total">¥0.00</span>
+                    </div>
+                    <button class="checkout-btn">去结算</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 用户登录区遮罩 -->
+    <div class="user-login-mask"></div>
+    <!-- 用户登录区 -->
+    <div class="user-login">
+        <i class="fas fa-times login-close"></i>
+        <h2 class="login-title">用户登录</h2>
+        <form>
+            <div class="login-form-group">
+                <label for="login-email">电子邮箱</label>
+                <input type="email" id="login-email" class="login-input" placeholder="输入您的邮箱">
+            </div>
+            <div class="login-form-group">
+                <label for="login-password">密码</label>
+                <input type="password" id="login-password" class="login-input" placeholder="输入您的密码">
+            </div>
+            <button type="button" class="login-btn">登录</button>
+            <div class="login-divider">或</div>
+            <div class="social-login">
+                <div class="social-btn facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn google-btn">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn twitter-btn">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+            <p class="register-link">
+                没有账号? <a href="#">立即注册</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title">关于我们</h3>
+                <p>萌物堂致力于为用户提供最精致的手办与可爱玩具，精选全球优质产品，让生活充满萌趣与治愈。</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-weibo"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                    <a href="#"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-bilibili"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">新品上架</a></li>
+                    <li><a href="#">限时优惠</a></li>
+                    <li><a href="#">热销榜单</a></li>
+                    <li><a href="#">预售专区</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">客户服务</h3>
+                <ul class="footer-links">
+                    <li><a href="#">购物指南</a></li>
+                    <li><a href="#">配送方式</a></li>
+                    <li><a href="#">支付方式</a></li>
+                    <li><a href="#">售后服务</a></li>
+                    <li><a href="#">常见问题</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">联系我们</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 上海市浦东新区张江高科技园区555号</p>
+                    <p><i class="fas fa-phone"></i> 400-123-4567</p>
+                    <p><i class="fas fa-envelope"></i> service@mengwutang.com</p>
+                    <p><i class="fas fa-clock"></i> 周一至周日 9:00-21:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 萌物堂 All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script src="js/script.js"></script>
+</head>
+
+</html>
