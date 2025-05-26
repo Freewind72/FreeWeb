@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面不见了</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0c29;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* 主容器 */
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 404文字效果 */
+        .error-code {
+            font-size: 15rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #f3ec78, #af4261);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            position: relative;
+            margin-bottom: 2rem;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* 文字浮动动画 */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateY(0);
+            }
+
+            50% {
+                transform: translateY(-30px) rotateY(10deg);
+            }
+        }
+
+        /* 错误信息 */
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            animation: textGlow 3s infinite alternate;
+        }
+
+        /* 文字发光动画 */
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* 返回按钮 */
+        .home-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .home-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .home-btn:hover:before {
+            left: 100%;
+        }
+
+        /* 粒子动画 */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* 数字破碎动画 */
+        .broken-number {
+            position: absolute;
+            font-size: 5rem;
+            color: white;
+            opacity: 0.8;
+            animation: fall 4s linear forwards;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 3D立方体动画 */
+        .cube {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .front {
+            transform: translateZ(50px);
+            background: rgba(243, 156, 18, 0.4);
+        }
+
+        .back {
+            transform: translateZ(-50px) rotateY(180deg);
+            background: rgba(41, 128, 185, 0.4);
+        }
+
+        .right {
+            transform: translateX(50px) rotateY(90deg);
+            background: rgba(255, 0, 0, 0.4);
+        }
+
+        .left {
+            transform: translateX(-50px) rotateY(-90deg);
+            background: rgba(0, 255, 0, 0.4);
+        }
+
+        .top {
+            transform: translateY(-50px) rotateX(90deg);
+            background: rgba(0, 0, 255, 0.4);
+        }
+
+        .bottom {
+            transform: translateY(50px) rotateX(-90deg);
+            background: rgba(255, 255, 0, 0.4);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 8rem;
+            }
+
+            .error-message {
+                font-size: 1.5rem;
+            }
+
+            .home-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        /* 鼠标跟随效果 */
+        .cursor-follower {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 鼠标跟随 -->
+    <div class="cursor-follower"></div>
+
+    <!-- 3D立方体 -->
+    <div class="cube">
+        <div class="face front">4</div>
+        <div class="face back">0</div>
+        <div class="face right">4</div>
+        <div class="face left">0</div>
+        <div class="face top">4</div>
+        <div class="face bottom">0</div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">哎呀！你要找的页面被外星人劫持了...</p>
+        <a href="/" class="home-btn">返回首页</a>
+    </div>
+
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+
+    <!-- 脚本 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // 初始化粒子系统
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 6,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // 鼠标跟随效果
+            const cursorFollower = document.querySelector('.cursor-follower');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) / 8;
+                cursorY += (mouseY - cursorY) / 8;
+
+                cursorFollower.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            animateCursor();
+
+            // 404数字破碎效果
+            function createBrokenNumber() {
+                const container = document.querySelector('.container');
+                const numbers = ['4', '0', '4'];
+                const number = numbers[Math.floor(Math.random() * numbers.length)];
+
+                const brokenNum = document.createElement('div');
+                brokenNum.className = 'broken-number';
+                brokenNum.textContent = number;
+                brokenNum.style.left = `${Math.random() * 100}vw`;
+
+                container.appendChild(brokenNum);
+
+                setTimeout(() => {
+                    brokenNum.remove();
+                }, 4000);
+            }
+
+            setInterval(createBrokenNumber, 500);
+
+            // 背景颜色变化
+            let hue = 0;
+            function changeBackgroundColor() {
+                hue = (hue + 0.5) % 360;
+                document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 50%, 20%) 0%, hsl(${hue + 120}, 50%, 50%) 100%)`;
+                requestAnimationFrame(changeBackgroundColor);
+            }
+
+            changeBackgroundColor();
+        });
+    </script>
+</body>
+
+</html>
