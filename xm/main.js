@@ -5,8 +5,8 @@ const key = 'sDrdLWxfFcPkKxf6RbBMOKyLhiqQ6gls'; // 商户密钥（请替换为�
 // notify_url 用于接收支付平台的异步通知（服务器回调），必须为公网可访问的接口地址
 // return_url 用于支付完成后页面跳转通知，用户支付后会跳转到该页面
 // notify_url 和 return_url 必须为公网可访问地址，否则签名校验会失败
-const notify_url = 'https://yourdomain.com/notify'; // 替换为你的真实公网地址
-const return_url = 'https://yourdomain.com/return'; // 替换为你的真实公网地址
+const notify_url = 'https://freewind72.github.io/FreeWeb/xm'; // 替换为你的真实公网地址
+const return_url = 'https://freewind72.github.io/FreeWeb/xm'; // 替换为你的真实公网地址
 const sitename = '精致支付网站';
 
 function buildSign(params, key) {
