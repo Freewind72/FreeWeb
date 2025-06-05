@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>精致支付网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2>在线支付</h2>
+    <form id="payForm">
+        <label>商品名称
+            <input type="text" name="name" required placeholder="请输入商品名称">
+        </label>
+        <label>金额(元)
+            <input type="number" name="money" required min="0.01" step="0.01" placeholder="请输入金额">
+        </label>
+        <label>支付方式
+            <select name="type" required>
+                <option value="alipay">支付宝</option>
+                <option value="wxpay">微信支付</option>
+                <option value="qqpay">QQ钱包</option>
+            </select>
+        </label>
+        <label>商户订单号
+            <input type="text" name="out_trade_no" required placeholder="唯一订单号">
+        </label>
+        <button type="submit">立即支付</button>
+    </form>
+    <div id="payResult"></div>
+    <hr>
+    <h3>订单查询</h3>
+    <form id="queryForm">
+        <label>订单号
+            <input type="text" name="order_no" required placeholder="请输入订单号">
+        </label>
+        <button type="submit">查询订单</button>
+    </form>
+    <div id="queryResult"></div>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
