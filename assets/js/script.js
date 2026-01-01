@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 加载数据
 async function loadData() {
     try {
-        const response = await fetch('api/get_data.php');
+        const response = await fetch('https://moongazer.top/FreeWeb/api/get_data.php');
         const result = await response.json();
 
         if (result.code === 0) {
@@ -348,4 +348,5 @@ function showError(message) {
                     <p style="font-size: 18px; color: var(--text-secondary);">${message}</p>
                 </div>
             `;
+
 }
